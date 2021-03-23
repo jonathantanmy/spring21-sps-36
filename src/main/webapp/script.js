@@ -20,6 +20,7 @@ function loadEntries() {
       entryListElement.appendChild(createEntryElement(entry));
     })
   });
+  console.log("loaded entries!")
 }
 
 /** Creates an element that represents a task, including its delete button. */
