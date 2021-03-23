@@ -6,14 +6,12 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
-  <body>
+  <body onload="loadEntries()">
     <div id="content">
       <h1>My Portfolio</h1>
       <p>This is my test that the branch works.</p>
-      <p>Click <a href="/hello">here</a> to see content created by server code.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
+      <p>Click <a href="NewEntry/newEntry.html">here</a> to see new entry</p>
+      <ul id="entry-list"></ul>
     </div>
   </body>
 </html>
