@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package main.java.com.google.sps.data;
+package com.google.sps.data;
 
 /** An item on entry list. */
 public final class Entry {
