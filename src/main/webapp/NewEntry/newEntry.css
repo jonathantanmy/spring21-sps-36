@@ -1,5 +1,18 @@
 #content {
   margin-left: auto;
   margin-right: auto;
-  width: 650px;
+  width: 80%;
+}
+
+.backButton {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#newEntryTitle {
+    width: 80%;
+}
+
+#newEntryButton {
+    margin-top: 10px;
 }

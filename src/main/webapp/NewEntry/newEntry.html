@@ -20,26 +20,24 @@
     <script src="newEntry.js"></script>
   </head>
 
-  <body>
-    <div id="content">
-      <div class="card" style="width: 80%;">
-        <div class="card-body">
-            <form>
-              <button type="button" class="btn btn-default btn-sm navButton" value="Go back" onclick="history.back()">
-                <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
-              </button>
-              <h1 class="card-title">Create a New Journal Entry!</h1>
-            </form>
-            <form method="POST" action="/new-entry">
-              <div class="mb-3">
-                  <label for="entryText" class="form-label">What's on your mind?: </label>
-                  <input type="text" class="form-control" id="entryText" name="entryText" aria-describedby="Journal Entry Text">
-                  <div id="Journal Entry Text" class="form-text">Your journal entries are private.</div>
-              </div>
-              <button type="submit" class="btn btn-primary">Save Entry</button>
-            </form>
+    <body>
+        <div id="content" class="card">
+            <div class="card-body">
+                <form>
+                    <button type="button" class="btn btn-default btn-sm backButton" value="Go back" onclick="history.back()">
+                        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                    </button>
+                    <h1 id="newEntryTitle" class="card-title">Create a New Journal Entry!</h1>
+                </form>
+                <form method="POST" action="/new-entry">
+                    <div class="mb-3">
+                        <label for="entryText" class="form-label">What's on your mind?: </label>
+                        <input type="text" class="form-control" id="entryText" name="entryText" aria-describedby="Journal Entry Text">
+                        <div id="Journal Entry Text" class="form-text">Your journal entries are private.</div>
+                    </div>
+                    <button type="submit" id="newEntryButton" class="btn btn-primary">Save Entry</button>
+                </form>
+            </div>
         </div>
-      </div>
-    </div>
-  </body>
+    </body>
 </html>
