@@ -4,12 +4,13 @@
   width: 80%;
 }
 
-.backButton {
+.back-button {
     margin-top: 20px;
     margin-bottom: 10px;
 }
 
 #newEntryTitle {
+    font-size: 30px;
     width: 80%;
 }
 

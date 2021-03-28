@@ -24,10 +24,12 @@
         <div id="content" class="card">
             <div class="card-body">
                 <form>
-                    <button type="button" class="btn btn-default btn-sm backButton" value="Go back" onclick="history.back()">
-                        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
-                    </button>
-                    <h1 id="newEntryTitle" class="card-title">Create a New Journal Entry!</h1>
+                    <a>
+                        <button type="button" class="btn btn-default btn-sm back-button" value="Go back" onclick="history.back()">
+                            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                        </button>
+                        <p id="newEntryTitle">Create a New Journal Entry!</p>
+                    </a>
                 </form>
                 <form method="POST" action="/new-entry">
                     <div class="mb-3">
