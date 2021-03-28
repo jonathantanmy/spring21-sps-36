@@ -14,6 +14,10 @@
     width: 80%;
 }
 
+#entryText textarea {
+    resize: none;
+}
+
 #newEntryButton {
-    margin-top: 10px;
+    margin-top: 20px;
 }

@@ -24,17 +24,14 @@
         <div id="content" class="card">
             <div class="card-body">
                 <form>
-                    <a>
-                        <button type="button" class="btn btn-default btn-sm back-button" value="Go back" onclick="history.back()">
-                            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
-                        </button>
-                        <p id="newEntryTitle">Create a New Journal Entry!</p>
-                    </a>
+                    <button type="button" class="btn btn-default btn-sm back-button" value="Go back" onclick="history.back()">
+                        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                    </button>
+                    <p id="newEntryTitle">Create a New Journal Entry!</p>
                 </form>
                 <form method="POST" action="/new-entry">
                     <div class="mb-3">
-                        <label for="entryText" class="form-label">What's on your mind?: </label>
-                        <input type="text" class="form-control" id="entryText" name="entryText" aria-describedby="Journal Entry Text">
+                        <textarea type="text" class="form-control" id="entryText" name="entryText" aria-describedby="Journal Entry Text" rows="10" cols="25" placeholder="What's on your mind?"></textarea>
                         <div id="Journal Entry Text" class="form-text">Your journal entries are private.</div>
                     </div>
                     <button type="submit" id="newEntryButton" class="btn btn-primary">Save Entry</button>
