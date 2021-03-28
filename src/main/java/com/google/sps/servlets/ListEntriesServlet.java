@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package main.java.com.google.sps.servlets;
+package com.google.sps.servlets;
 
 import com.google.cloud.datastore.Datastore;
 import com.google.cloud.datastore.DatastoreOptions;
@@ -21,7 +21,7 @@ import com.google.cloud.datastore.Query;
 import com.google.cloud.datastore.QueryResults;
 import com.google.cloud.datastore.StructuredQuery.OrderBy;
 import com.google.gson.Gson;
-import main.java.com.google.sps.data.Entry;
+import com.google.sps.data.Entry;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
