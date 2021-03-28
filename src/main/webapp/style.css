@@ -7,3 +7,19 @@
 #greeting-container {
   margin-top: 20px;
 }
+
+#entry-list {
+  list-style-type: none;
+}
+
+.entry {
+  border: thin solid black;
+  display: flex;
+  margin: 10px;
+  padding: 10px;
+  width: 300px;
+}
+
+.entry span {
+  flex-grow: 1;
+}
