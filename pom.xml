@@ -46,7 +46,7 @@
         <version>1.104.0</version>
     </dependency>
 
-    <!-- sentiment analysis -->
+    <!-- Cloud Language -->
     <dependency>
         <groupId>com.google.cloud</groupId>
         <artifactId>google-cloud-language</artifactId>
