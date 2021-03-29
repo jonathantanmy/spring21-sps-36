@@ -34,6 +34,7 @@ public class NewEntryServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Sanitize user input to remove HTML tags and JavaScript.
+    String entryTitle = Jsoup.clean(request.getParameter("entryTitle"), Whitelist.none());
     String entryText = Jsoup.clean(request.getParameter("entryText"), Whitelist.none());
     long timestamp = System.currentTimeMillis();
 
@@ -41,6 +42,7 @@ public class NewEntryServlet extends HttpServlet {
     KeyFactory keyFactory = datastore.newKeyFactory().setKind("Entry");
     FullEntity entryEntity =
         Entity.newBuilder(keyFactory.newKey())
+            .set("entryTitle", entryTitle)
             .set("entryText", entryText)
             .set("timestamp", timestamp)
             .build();

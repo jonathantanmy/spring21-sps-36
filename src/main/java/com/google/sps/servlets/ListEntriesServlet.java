@@ -43,13 +43,14 @@ public class ListEntriesServlet extends HttpServlet {
 
     List<Entry> entries = new ArrayList<>();
     while (results.hasNext()) {
-      Entity entity = results.next();
+      javax.swing.text.html.parser.Entity entity = results.next();
 
       long id = entity.getKey().getId();
+      String entryTitle = entity.getString("entryTitle");
       String entryText = entity.getString("entryText");
       long timestamp = entity.getLong("timestamp");
 
-      Entry entry = new Entry(id, entryText, timestamp);
+      Entry entry = new Entry(id, entryTitle, entryText, timestamp);
       entries.add(entry);
     }
 

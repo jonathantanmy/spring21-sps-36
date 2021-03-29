@@ -28,6 +28,9 @@ function createEntryElement(entry) {
   const entryElement = document.createElement('li');
   entryElement.className = 'entry';
 
+  const entryTitleElement = document.createElement('span');
+  entryTitleElement.innerText = entry.entryTitle;
+
   const entryTextElement = document.createElement('span');
   entryTextElement.innerText = entry.entryText;
 
@@ -40,6 +43,7 @@ function createEntryElement(entry) {
     entryElement.remove();
   });
 
+  entryElement.appendChild(entryTitleElement);
   entryElement.appendChild(entryTextElement);
   entryElement.appendChild(deleteButtonElement);
   return entryElement;

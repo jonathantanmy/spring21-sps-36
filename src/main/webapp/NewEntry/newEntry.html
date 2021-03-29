@@ -31,7 +31,8 @@
                 </form>
                 <form method="POST" action="/new-entry">
                     <div class="mb-3">
-                        <textarea type="text" class="form-control" id="entryText" name="entryText" aria-describedby="Journal Entry Text" rows="10" cols="25" placeholder="What's on your mind?"></textarea>
+                        <input id="entryTitle" name="entryTitle" type="text" class="form-control" aria-describedby="Journal Entry Title" placeholder="(ex: 'January 1st, 2021'; ex: 'My 23rd Birthday!')">
+                        <textarea id="entryText" name="entryText" type="text" class="form-control" aria-describedby="Journal Entry Text" rows="10" cols="25" placeholder="What's on your mind today?"></textarea>
                         <div id="Journal Entry Text" class="form-text">Your journal entries are private.</div>
                     </div>
                     <button type="submit" id="newEntryButton" class="btn btn-primary">Save Entry</button>
