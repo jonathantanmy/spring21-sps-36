@@ -27,6 +27,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 
+// cloud language imports
+import com.google.cloud.language.v1.Document;
+import com.google.cloud.language.v1.LanguageServiceClient;
+import com.google.cloud.language.v1.Sentiment;
+
 /** Servlet responsible for creating new tasks. */
 @WebServlet("/new-entry")
 public class NewEntryServlet extends HttpServlet {
@@ -37,14 +42,29 @@ public class NewEntryServlet extends HttpServlet {
     String entryText = Jsoup.clean(request.getParameter("entryText"), Whitelist.none());
     long timestamp = System.currentTimeMillis();
 
+    // performing sentiment analysis
+    String message = request.getParameter("entryText");
+    Document doc =
+    Document.newBuilder().setContent(message).setType(Document.Type.PLAIN_TEXT).build();
+    LanguageServiceClient languageService = LanguageServiceClient.create();
+    Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
+    float s = sentiment.getScore();
+    // score ranges from [-1,1], with a precision point of 0.1 
+    // score < 0: more negative; score > 0: more positive
+    double score = s;
+    System.out.println(s);
+    languageService.close();
+    
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
     KeyFactory keyFactory = datastore.newKeyFactory().setKind("Entry");
     FullEntity entryEntity =
         Entity.newBuilder(keyFactory.newKey())
             .set("entryText", entryText)
             .set("timestamp", timestamp)
+            .set("score", score)
             .build();
     datastore.put(entryEntity);
+    
 
     response.sendRedirect("/index.html");
   }
