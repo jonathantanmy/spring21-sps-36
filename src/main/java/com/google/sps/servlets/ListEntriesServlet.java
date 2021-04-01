@@ -43,7 +43,7 @@ public class ListEntriesServlet extends HttpServlet {
 
     List<Entry> entries = new ArrayList<>();
     while (results.hasNext()) {
-      javax.swing.text.html.parser.Entity entity = results.next();
+      Entity entity = results.next();
 
       long id = entity.getKey().getId();
       String entryTitle = entity.getString("entryTitle");
