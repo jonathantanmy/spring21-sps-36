@@ -1,10 +1,21 @@
-* {
-    box-sizing: border-box;
+/* #entry-list {
+  list-style-type: none;
 }
 
-a {
-    color: black;
-    font-size: 20px;
+.entry {
+  border: thin solid black;
+  display: flex;
+  margin: 10px;
+  padding: 10px;
+  width: 300px;
+}
+
+.entry span {
+  flex-grow: 1;
+} */
+
+* {
+    box-sizing: border-box;
 }
 
 body {
@@ -13,43 +24,91 @@ body {
     margin: 0;
 }
 
-footer {
-    display: flex;
-    align-items: center;
-
-    height: 200px;
-    background: #4E68EF;
-    padding: 40px;
-}
-
 main {
-    height: 98vh;
+    display: flex;
+    flex-direction: row;
 }
 
-.footer-links {
+.compose-btn {
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-
-    width: 60%;
-}
-
-.footer-logo {
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    width: 40%;
+    width: 80%;
+    font-size: 20px;
+    background: white;
+    padding: 4px;
+    margin: 10px 20px;
+    border: none;
+    border-radius: 20px;
 }
 
-.footer-logo .logo {
-    font-size: 50px;
-    padding-bottom: 16px;
+.compose-btn>span.material-icons {
+    font-size: 24px;
+    margin-right: 6px;
 }
 
-.logo {
-    font-size: 40px;
+.compose-btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.journal {
+    padding: 10px;
+}
+
+.journal:nth-child(odd) {
+    background: whitesmoke;
+}
+
+.journal-content {
+    width: 100%;
+    height: 90%;
+    background: white;
+    padding: 40px;
+    border: 1px solid black;
+}
+
+.journal-display-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    width: 80vw;
+    background: url("https://cdn.hipwallpaper.com/i/22/44/AKMUqs.gif");
+}
+
+.journal-display {
+    width: 80%;
+    height: 90%;    
+}
+
+.journal-list {
+    overflow: auto;
+}
+
+.journal-title {
+    width: 100%;
+    height: 10%;
+    font-size: 24px;
+    padding: 10px;
+}
+
+.side-bar {
+    display: flex;
+    flex-direction: column;
+
+    height: 92vh;
+    width: 20vw;
+    max-width: 30vw;
+    background: #E1E8FF;
+    border-right: 1px solid #4E68EF;
+}
+
+.tool-bar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 4px 10px;
 }
 
 .top-bar {
