@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>New Entry</title>
+
+    <!-- jQuery (from Google's CDN)-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <!-- Bootstrap (from MaxCDN)-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+    <!-- Custom CSS and JavaScript-->
+    <link rel="stylesheet" href="newEntry.css">
+    <script src="newEntry.js"></script>
+  </head>
+
+    <body>
+        <div id="content" class="card">
+            <div class="card-body">
+                <form>
+                    <button type="button" class="btn btn-default btn-sm back-button" value="Go back" onclick="history.back()">
+                        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                    </button>
+                    <p id="newEntryTitle">Create a New Journal Entry!</p>
+                </form>
+                <form method="POST" action="/new-entry">
+                    <div class="mb-3">
+                        <textarea type="text" class="form-control" id="entryText" name="entryText" aria-describedby="Journal Entry Text" rows="10" cols="25" placeholder="What's on your mind?"></textarea>
+                        <div id="Journal Entry Text" class="form-text">Your journal entries are private.</div>
+                    </div>
+                    <button type="submit" id="newEntryButton" class="btn btn-primary">Save Entry</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
