@@ -16,8 +16,11 @@
 function loadEntries() {
     fetch('/list-entries').then(response => response.json()).then((entries) => {
       const entryListElement = document.getElementById('entry-list');
+      const journalContentTextArea = document.getElementById("journal-content");
       entries.forEach((entry) => {
-          console.log(entry);
+        entry.addEventListener("click", () => {
+            // display content to the textarea
+        })
         entryListElement.appendChild(createEntryElement(entry));
       })
     });
