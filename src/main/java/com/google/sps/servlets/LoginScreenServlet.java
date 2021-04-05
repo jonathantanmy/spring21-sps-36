@@ -36,7 +36,10 @@ public class LoginScreenServlet extends HttpServlet {
       
       response.getWriter().println("<p><a href=\"/logout\">Logout</a></p>");
     } else {
+        System.out.println("we are gonna do it ");
       response.getWriter().println("<a href=\"/login\">Login with Google</a>");	
+            // response.sendRedirect("/login");
+            // url.setRawPath("/login");
     }
   }
 }

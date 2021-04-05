@@ -15,7 +15,7 @@
 /** Fetches tasks from the server and adds them to the DOM. */
 function login() {
     // const params = new URLSearchParams();
-    fetch('/login_screen');
+    location.href = '/login';
 }
 function loadEntries() {
   fetch('/list-entries').then(response => response.json()).then((entries) => {

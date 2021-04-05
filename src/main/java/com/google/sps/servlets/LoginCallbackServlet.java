@@ -22,7 +22,9 @@ public class LoginCallbackServlet extends AbstractAuthorizationCodeCallbackServl
 
   @Override
   protected String getRedirectUri(HttpServletRequest request) {
+      System.out.println("we do get here");
     GenericUrl url = new GenericUrl(request.getRequestURL().toString());
+    System.out.println(request.getRequestURL().toString());
     url.setRawPath("/login-callback");
     return url.build();
   }
@@ -35,7 +37,8 @@ public class LoginCallbackServlet extends AbstractAuthorizationCodeCallbackServl
   @Override
   protected void onSuccess(HttpServletRequest request, HttpServletResponse response, Credential credential)
       throws IOException {
-    response.sendRedirect("/login_screen");
+          System.out.println("we are successful");
+    response.sendRedirect("/index.html");
   }
 
   @Override

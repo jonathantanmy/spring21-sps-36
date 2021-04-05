@@ -22,6 +22,8 @@ public class OAuthUtils {
   public static GoogleAuthorizationCodeFlow newFlow() throws IOException {
     final String oauthClientId = System.getenv("OAUTH_CLIENT_ID");
     final String oauthClientSecret = System.getenv("OAUTH_CLIENT_SECRET");
+
+    if (oauthClientId == null || oauthClientSecret == null) throw new IllegalArgumentException("something is null");
       
     List<String> scopes = Arrays.asList(
         "https://www.googleapis.com/auth/userinfo.profile",
