@@ -20,10 +20,13 @@ public final class Entry {
   private final long id;
   private final String entryText;
   private final long timestamp;
+  private final double score;
 
-  public Entry(long id, String entryText, long timestamp) {
+  public Entry(long id, String entryText, long timestamp, double score) {
     this.id = id;
     this.entryText = entryText;
     this.timestamp = timestamp;
+    this.score = score;
   }
+
 }

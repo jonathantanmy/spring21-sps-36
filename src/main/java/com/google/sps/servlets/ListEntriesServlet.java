@@ -19,6 +19,7 @@ import com.google.cloud.datastore.DatastoreOptions;
 import com.google.cloud.datastore.Entity;
 import com.google.cloud.datastore.Query;
 import com.google.cloud.datastore.QueryResults;
+import com.google.cloud.datastore.Value;
 import com.google.cloud.datastore.StructuredQuery.OrderBy;
 import com.google.gson.Gson;
 import com.google.sps.data.Entry;
@@ -48,8 +49,9 @@ public class ListEntriesServlet extends HttpServlet {
       long id = entity.getKey().getId();
       String entryText = entity.getString("entryText");
       long timestamp = entity.getLong("timestamp");
+      double score = entity.getDouble("score");
+      Entry entry = new Entry(id, entryText, timestamp, score);
 
-      Entry entry = new Entry(id, entryText, timestamp);
       entries.add(entry);
     }
 
