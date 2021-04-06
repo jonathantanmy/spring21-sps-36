@@ -21,11 +21,14 @@ public final class Entry {
   private final String entryTitle;
   private final String entryText;
   private final long timestamp;
+  private final double score;
 
-  public Entry(long id, String entryTitle, String entryText, long timestamp) {
+  public Entry(long id, String entryTitle, String entryText, long timestamp, double score) {
     this.id = id;
     this.entryTitle = entryTitle;
     this.entryText = entryText;
     this.timestamp = timestamp;
+    this.score = score;
   }
+
 }
