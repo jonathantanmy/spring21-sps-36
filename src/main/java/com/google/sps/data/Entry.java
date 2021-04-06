@@ -20,10 +20,12 @@ public final class Entry {
   private final long id;
   private final String entryText;
   private final long timestamp;
+  private final String userId;
 
-  public Entry(long id, String entryText, long timestamp) {
+  public Entry(long id, String entryText, long timestamp, String userId) {
     this.id = id;
     this.entryText = entryText;
     this.timestamp = timestamp;
+    this.userId = userId;
   }
 }

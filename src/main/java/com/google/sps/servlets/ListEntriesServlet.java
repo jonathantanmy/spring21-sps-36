@@ -16,8 +16,11 @@ package com.google.sps.servlets;
 
 import com.google.cloud.datastore.Datastore;
 import com.google.cloud.datastore.DatastoreOptions;
+import com.google.cloud.datastore.StructuredQuery.CompositeFilter;
 import com.google.cloud.datastore.Entity;
 import com.google.cloud.datastore.Query;
+import com.google.cloud.datastore.StructuredQuery;
+import com.google.cloud.datastore.StructuredQuery.PropertyFilter;
 import com.google.cloud.datastore.QueryResults;
 import com.google.cloud.datastore.StructuredQuery.OrderBy;
 import com.google.gson.Gson;
@@ -29,6 +32,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.google.api.services.oauth2.model.Userinfo;
+import com.google.sps.OAuthUtils;
 
 /** Servlet responsible for listing entries. */
 @WebServlet("/list-entries")
@@ -37,8 +42,25 @@ public class ListEntriesServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
+
+    String sessionId = request.getSession().getId();
+    Userinfo userInfo = null;
+    boolean isUserLoggedIn =
+        OAuthUtils.isUserLoggedIn(sessionId);
+
+    if (isUserLoggedIn) {
+      userInfo = OAuthUtils.getUserInfo(sessionId);
+    }
+    else {
+        response.sendRedirect("/login");
+    }
+
     Query<Entity> query =
-        Query.newEntityQueryBuilder().setKind("Entry").setOrderBy(OrderBy.desc("timestamp")).build();
+        Query.newEntityQueryBuilder()
+        .setKind("Entry")
+        // .setOrderBy(OrderBy.desc("timestamp"))
+        .setFilter(PropertyFilter.eq("userId", userInfo.getEmail()))
+        .build();
     QueryResults<Entity> results = datastore.run(query);
 
     List<Entry> entries = new ArrayList<>();
@@ -48,8 +70,9 @@ public class ListEntriesServlet extends HttpServlet {
       long id = entity.getKey().getId();
       String entryText = entity.getString("entryText");
       long timestamp = entity.getLong("timestamp");
+      String userId = entity.getString("userId");
 
-      Entry entry = new Entry(id, entryText, timestamp);
+      Entry entry = new Entry(id, entryText, timestamp, userId);
       entries.add(entry);
     }
 
