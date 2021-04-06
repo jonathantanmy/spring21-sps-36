@@ -47,11 +47,12 @@ public class ListEntriesServlet extends HttpServlet {
       Entity entity = results.next();
 
       long id = entity.getKey().getId();
+      String entryTitle = entity.getString("entryTitle");
       String entryText = entity.getString("entryText");
       long timestamp = entity.getLong("timestamp");
       double score = entity.getDouble("score");
-      Entry entry = new Entry(id, entryText, timestamp, score);
-
+      
+      Entry entry = new Entry(id, entryTitle, entryText, timestamp, score);
       entries.add(entry);
     }
 
