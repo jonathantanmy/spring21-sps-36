@@ -43,7 +43,14 @@
     <dependency>
         <groupId>com.google.cloud</groupId>
         <artifactId>google-cloud-datastore</artifactId>
-        <version>1.104.0</version>
+        <version>1.106.0</version>
+    </dependency>
+
+    <!-- Cloud Language -->
+    <dependency>
+        <groupId>com.google.cloud</groupId>
+        <artifactId>google-cloud-language</artifactId>
+        <version>1.102.0</version>
     </dependency>
 
     <!-- jsoup -->
@@ -115,6 +122,16 @@
                   <mainClass>${exec.mainClass}</mainClass>
                 </transformer>
               </transformers>
+                <filters>
+                    <filter>
+                        <artifact>*:*</artifact>
+                        <excludes>
+                            <exclude>META-INF/*.SF</exclude>
+                            <exclude>META-INF/*.DSA</exclude>
+                            <exclude>META-INF/*.RSA</exclude>
+                        </excludes>
+                    </filter>
+                </filters>
             </configuration>
           </execution>
         </executions>
