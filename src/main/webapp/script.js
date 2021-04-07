@@ -13,6 +13,9 @@
 // limitations under the License.
 
 /** Fetches tasks from the server and adds them to the DOM. */
+function login() {
+    location.href = '/login_screen';
+}
 function loadEntries() {
   fetch('/list-entries').then(response => response.json()).then((entries) => {
     const entryListElement = document.getElementById('entry-list');
