@@ -14,6 +14,7 @@
 
 package com.google.sps.servlets;
 
+import com.google.api.services.oauth2.model.Userinfo;
 import com.google.cloud.datastore.Datastore;
 import com.google.cloud.datastore.DatastoreOptions;
 import com.google.cloud.datastore.StructuredQuery.CompositeFilter;
@@ -26,6 +27,7 @@ import com.google.cloud.datastore.Value;
 import com.google.cloud.datastore.StructuredQuery.OrderBy;
 import com.google.gson.Gson;
 import com.google.sps.data.Entry;
+import com.google.sps.OAuthUtils;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +35,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.google.api.services.oauth2.model.Userinfo;
-import com.google.sps.OAuthUtils;
 
 /** Servlet responsible for listing entries. */
 @WebServlet("/list-entries")
@@ -59,7 +59,6 @@ public class ListEntriesServlet extends HttpServlet {
     Query<Entity> query =
         Query.newEntityQueryBuilder()
         .setKind("Entry")
-        // .setOrderBy(OrderBy.desc("timestamp"))
         .setFilter(PropertyFilter.eq("userId", userInfo.getEmail()))
         .build();
     QueryResults<Entity> results = datastore.run(query);
