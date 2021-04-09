@@ -51,3 +51,30 @@ function deleteEntry(entry) {
   params.append('id', entry.id);
   fetch('/delete-entry', {method: 'POST', body: params});
 }
+
+
+// google clouds API
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+/** Creates a chart and adds it to the page. */
+function drawChart() {
+  const data = new google.visualization.DataTable();
+  data.addColumn('string', 'Mood');
+  data.addColumn('number', 'Count');
+        data.addRows([
+          ['Very Happy', 10],
+          ['Happy', 5],
+          ['Sad', 15],
+          ['Very Sad', 15]
+        ]);
+
+  const options = {
+    'title': 'Daily Mood',
+    'width':400,
+    'height':400
+  };
+
+  const chart = new google.visualization.PieChart(
+      document.getElementById('chart-container'));
+  chart.draw(data, options);
+}
