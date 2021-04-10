@@ -18,14 +18,18 @@ package com.google.sps.data;
 public final class Entry {
 
   private final long id;
+  private final String entryTitle;
   private final String entryText;
   private final long timestamp;
   private final double score;
+  private final String userId;
 
-  public Entry(long id, String entryText, long timestamp, double score) {
+  public Entry(long id, String entryTitle, String entryText, long timestamp, String userId, double score) {
     this.id = id;
+    this.entryTitle = entryTitle;
     this.entryText = entryText;
     this.timestamp = timestamp;
+    this.userId = userId;
     this.score = score;
   }
 

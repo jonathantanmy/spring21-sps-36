@@ -19,6 +19,8 @@ import com.google.cloud.datastore.DatastoreOptions;
 import com.google.cloud.datastore.Entity;
 import com.google.cloud.datastore.FullEntity;
 import com.google.cloud.datastore.KeyFactory;
+import com.google.api.services.oauth2.model.Userinfo;
+import com.google.sps.OAuthUtils;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,8 +41,21 @@ public class NewEntryServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Sanitize user input to remove HTML tags and JavaScript.
+    String entryTitle = Jsoup.clean(request.getParameter("entryTitle"), Whitelist.none());
     String entryText = Jsoup.clean(request.getParameter("entryText"), Whitelist.none());
     long timestamp = System.currentTimeMillis();
+
+    String sessionId = request.getSession().getId();
+    Userinfo userInfo = null;
+    boolean isUserLoggedIn =
+        OAuthUtils.isUserLoggedIn(sessionId);
+
+    if (isUserLoggedIn) {
+      userInfo = OAuthUtils.getUserInfo(sessionId);
+    }
+    else {
+        response.sendRedirect("/login");
+    }
 
     // performing sentiment analysis
     String message = request.getParameter("entryText");
@@ -59,13 +74,15 @@ public class NewEntryServlet extends HttpServlet {
     KeyFactory keyFactory = datastore.newKeyFactory().setKind("Entry");
     FullEntity entryEntity =
         Entity.newBuilder(keyFactory.newKey())
+            .set("entryTitle", entryTitle)
             .set("entryText", entryText)
             .set("timestamp", timestamp)
+            .set("userId", userInfo.getEmail())
             .set("score", score)
             .build();
     datastore.put(entryEntity);
     
 
-    response.sendRedirect("/index.html");
+    response.sendRedirect("/homepage.html");
   }
 }
