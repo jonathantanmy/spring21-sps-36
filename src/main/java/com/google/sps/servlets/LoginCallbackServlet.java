@@ -36,7 +36,7 @@ public class LoginCallbackServlet extends AbstractAuthorizationCodeCallbackServl
   @Override
   protected void onSuccess(HttpServletRequest request, HttpServletResponse response, Credential credential)
       throws IOException {
-        response.sendRedirect("/homepage.html");
+        response.sendRedirect("/index.html");
   }
 
   @Override

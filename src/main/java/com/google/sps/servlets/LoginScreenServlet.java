@@ -25,7 +25,7 @@ public class LoginScreenServlet extends HttpServlet {
         response.sendRedirect("/login");
     }
     else{
-        response.sendRedirect("/homepage.html");
+        response.sendRedirect("/index.html");
     }
   }
 }

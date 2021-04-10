@@ -33,6 +33,7 @@ function createEntryElement(entry) {
 
   const entryTitleElement = document.createElement('span');
   entryTitleElement.innerText = entry.entryTitle;
+  entryTitleElement.style.fontWeight = "bold";
 
   const entryTextElement = document.createElement('span');
   entryTextElement.innerText = entry.entryText;
