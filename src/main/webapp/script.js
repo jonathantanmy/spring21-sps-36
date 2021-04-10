@@ -13,46 +13,48 @@
 // limitations under the License.
 
 /** Fetches tasks from the server and adds them to the DOM. */
+function login() {
+    location.href = '/login_screen';
+}
 function loadEntries() {
-    fetch('/list-entries').then(response => response.json()).then((entries) => {
-      const entryListElement = document.getElementById('entry-list');
-      const journalContentTextArea = document.getElementById("journal-content");
-      entries.forEach((entry) => {
-        entry.addEventListener("click", () => {
-            // display content to the textarea
-        })
-        entryListElement.appendChild(createEntryElement(entry));
-      })
-    });
-    console.log("loaded entries!")
-  }
-  
-  /** Creates an element that represents a task, including its delete button. */
-  function createEntryElement(entry) {
-    const entryElement = document.createElement('li');
-    entryElement.className = 'entry';
-  
-    const entryTextElement = document.createElement('span');
-    entryTextElement.innerText = entry.entryText;
-  
-    const deleteButtonElement = document.createElement('button');
-    deleteButtonElement.innerText = 'Delete';
-    deleteButtonElement.addEventListener('click', () => {
-      deleteEntry(entry);
-  
-      // Remove the task from the DOM.
-      entryElement.remove();
-    });
-  
-    entryElement.appendChild(entryTextElement);
-    entryElement.appendChild(deleteButtonElement);
-    return entryElement;
-  }
-  
-  /** Tells the server to delete the task. */
-  function deleteEntry(entry) {
-    const params = new URLSearchParams();
-    params.append('id', entry.id);
-    fetch('/delete-entry', {method: 'POST', body: params});
-  }
-  
+  fetch('/list-entries').then(response => response.json()).then((entries) => {
+    const entryListElement = document.getElementById('entry-list');
+    entries.forEach((entry) => {
+      entryListElement.appendChild(createEntryElement(entry));
+    })
+  });
+  console.log("loaded entries!")
+}
+
+/** Creates an element that represents a task, including its delete button. */
+function createEntryElement(entry) {
+  const entryElement = document.createElement('li');
+  entryElement.className = 'entry';
+
+  const entryTitleElement = document.createElement('span');
+  entryTitleElement.innerText = entry.entryTitle;
+
+  const entryTextElement = document.createElement('span');
+  entryTextElement.innerText = entry.entryText;
+
+  const deleteButtonElement = document.createElement('button');
+  deleteButtonElement.innerText = 'Delete';
+  deleteButtonElement.addEventListener('click', () => {
+    deleteEntry(entry);
+
+    // Remove the task from the DOM.
+    entryElement.remove();
+  });
+
+  entryElement.appendChild(entryTitleElement);
+  entryElement.appendChild(entryTextElement);
+  entryElement.appendChild(deleteButtonElement);
+  return entryElement;
+}
+
+/** Tells the server to delete the task. */
+function deleteEntry(entry) {
+  const params = new URLSearchParams();
+  params.append('id', entry.id);
+  fetch('/delete-entry', {method: 'POST', body: params});
+}
