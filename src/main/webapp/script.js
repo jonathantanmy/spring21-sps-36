@@ -38,7 +38,7 @@ function createEntryElement(entry) {
 
   });
 
-  const entryTitleElement = document.createElement('p');
+  const entryTitleElement = document.createElement('span');
   entryTitleElement.innerText = entry.entryTitle;
   entryTitleElement.style.fontWeight = "bold";
 
