@@ -30,8 +30,15 @@ function loadEntries() {
 function createEntryElement(entry) {
   const entryElement = document.createElement('li');
   entryElement.className = 'entry';
+  entryElement.addEventListener("click", () => {
+    const entryTitleElement = document.getElementById('entryTitle');
+    const entryContentElement = document.getElementById('entryContent');
+    entryTitleElement.value = entry.entryTitle;
+    entryContentElement.innerText = entry.entryText;
 
-  const entryTitleElement = document.createElement('span');
+  });
+
+  const entryTitleElement = document.createElement('p');
   entryTitleElement.innerText = entry.entryTitle;
   entryTitleElement.style.fontWeight = "bold";
 
