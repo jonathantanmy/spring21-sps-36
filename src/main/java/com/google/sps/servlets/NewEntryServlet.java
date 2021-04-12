@@ -82,7 +82,6 @@ public class NewEntryServlet extends HttpServlet {
             .build();
     datastore.put(entryEntity);
     
-
     response.sendRedirect("/index.html");
   }
 }

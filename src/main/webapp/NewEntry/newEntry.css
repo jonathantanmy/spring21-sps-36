@@ -1,24 +1,23 @@
 #content {
-    margin-left: auto;
-    margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+.back-button {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#newEntryTitle {
+    font-size: 30px;
     width: 80%;
-  }
-  
-  .back-button {
-      margin-top: 20px;
-      margin-bottom: 10px;
-  }
-  
-  #newEntryTitle {
-      font-size: 30px;
-      width: 80%;
-  }
-  
-  #entryText textarea {
-      resize: none;
-  }
-  
-  #newEntryButton {
-      margin-top: 20px;
-  }
-  
+}
+
+#entryText textarea {
+    resize: none;
+}
+
+#newEntryButton {
+    margin-top: 20px;
+}
