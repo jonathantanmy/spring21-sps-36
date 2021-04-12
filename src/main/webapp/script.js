@@ -64,15 +64,28 @@ function deleteEntry(entry) {
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 /** Creates a chart and adds it to the page. */
-function drawChart() {
+ async function drawChart() {
   const data = new google.visualization.DataTable();
+  const response = await fetch('/scores');
+  const scores = await response.json();
+  let happy = 0;
+  let neutral = 0;
+  let sad = 0;
+  for (let i = 0; i < scores.length; i ++){
+    if (scores[i] > -0.2 && scores[i] < 0.2){
+        neutral += 1
+    } else if (scores[i] >= 0.2){
+        happy += 1
+    } else {
+        sad += 1
+    }
+  }
   data.addColumn('string', 'Mood');
   data.addColumn('number', 'Count');
         data.addRows([
-          ['Very Happy', 10],
-          ['Happy', 5],
-          ['Sad', 15],
-          ['Very Sad', 15]
+          ['Happy', happy],
+          ['Neutral', neutral],
+          ['Sad', sad],
         ]);
 
   const options = {
