@@ -4,3 +4,5 @@
 .theia/
 .vscode/
 target/
+
+env_variables.yaml

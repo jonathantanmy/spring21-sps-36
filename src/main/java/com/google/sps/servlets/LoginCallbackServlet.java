@@ -7,7 +7,6 @@ import com.google.api.client.extensions.servlet.auth.oauth2.AbstractAuthorizatio
 import com.google.api.client.http.GenericUrl;
 import com.google.sps.OAuthUtils;
 import java.io.IOException;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,7 +35,7 @@ public class LoginCallbackServlet extends AbstractAuthorizationCodeCallbackServl
   @Override
   protected void onSuccess(HttpServletRequest request, HttpServletResponse response, Credential credential)
       throws IOException {
-        response.sendRedirect("/homepage.html");
+        response.sendRedirect("/index.html");
   }
 
   @Override
