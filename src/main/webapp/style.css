@@ -60,6 +60,13 @@ body {
     overflow: auto;
 }
 
+.sentimentIcon {
+    height: 4vw;
+    width: 4vw;
+    min-height: 35px;
+    min-width: 35px;
+}
+
 #entry-list {
   list-style-type: none;
   padding: 0;
