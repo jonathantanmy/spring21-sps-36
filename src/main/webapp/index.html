@@ -1,13 +1,56 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-  </head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Journally</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
 
-<body>
-    <p><a href="/login_screen">Login</a></p>
-</body>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+        <!-- Google Icons -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body onload="loadEntries()">
+        <header>
+            <div class="top-bar">
+                <nav class="container navbar navbar-dark">
+                    <h1 class="text-light flex-grow-1 text-center">Journally</h1>
+                    <button class="btn btn-outline-light"><a class="text-reset" href="/login_screen">Login</a></button>
+                </nav>
+            </div>
+        </header>
+        <!-- Main Content -->
+        <main class="d-flex flex-display-row">
+            <!-- SideBar -->
+            <div class="side-bar">
+                <!-- Compose Button -->
+                <div class="w-100 my-2 d-flex justify-content-around">
+                    <a href="NewEntry/newEntry.html">
+                        <button class="btn btn-light d-flex align-items-center rounded-pill py-2">
+                            <span class="material-icons material-icons-outlined mr-1">add_circle_outline</span>
+                            <span class="text-center">Compose</span>
+                        </button>
+                    </a>
+                    <a class="text-primary d-flex align-items-center" href="#">
+                        <span class="material-icons material-icons-outlined" style="font-size: 36px;">analytics</span>
+                    </a>
+                </div>
+                <!-- Journal List -->
+                <div class="flex-grow-1 overflow-auto">
+                    <ul id="entry-list"></ul>
+                </div>
+            </div>
+            <!-- Journal Display Section -->
+            <div class="journal-display">
+                <div class="w-75 h-100 pt-5 d-flex flex-column">
+                    <input class="font-weight-bold w-100 p-2 border-light rounded-lg" type="text" name="" id="entryTitle" placeholder="Title" readonly>
+                    <textarea name="journal-content" class="p-4 rounded-lg flex-grow-1" id="entryContent" readonly></textarea>
+                </div>
+            </div>
+          
+        </main>
+      
+    </body>
 </html>

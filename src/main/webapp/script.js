@@ -23,7 +23,7 @@ function loadEntries() {
       entryListElement.appendChild(createEntryElement(entry));
     })
   });
-  console.log("loaded entries!")
+  console.log('loaded entries!')
 }
 
 /** Creates an element that represents a task, including its delete button. */
@@ -32,12 +32,26 @@ function createEntryElement(entry) {
   entryElement.className = 'entry';
 
   const entryTitleElement = document.createElement('span');
+  entryTitleElement.className = 'entryTitle';
   entryTitleElement.innerText = entry.entryTitle;
 
   const entryTextElement = document.createElement('span');
+  entryTextElement.className = 'entryText';
   entryTextElement.innerText = entry.entryText;
+  entryTextElement.addEventListener('click', () => {
+    const entryTitleElement = document.getElementById('entryTitle');
+    const entryContentElement = document.getElementById('entryContent');
+    entryTitleElement.value = entry.entryTitle;
+    entryContentElement.innerText = entry.entryText;
+    console.log(entry.score);
+  });
+
+  const entryScoreElement = document.createElement('span');
+  entryScoreElement.innerText = 'Score: ' + entry.score;
+  entryScoreElement.style.fontStyle = 'italic';
 
   const deleteButtonElement = document.createElement('button');
+  deleteButtonElement.className = 'btn btn-outline-primary';
   deleteButtonElement.innerText = 'Delete';
   deleteButtonElement.addEventListener('click', () => {
     deleteEntry(entry);
@@ -48,6 +62,7 @@ function createEntryElement(entry) {
 
   entryElement.appendChild(entryTitleElement);
   entryElement.appendChild(entryTextElement);
+  entryElement.appendChild(entryScoreElement);
   entryElement.appendChild(deleteButtonElement);
   return entryElement;
 }

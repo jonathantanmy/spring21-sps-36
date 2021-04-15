@@ -1,25 +1,66 @@
-#content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 650px;
+* {
+    box-sizing: border-box;
 }
 
-#greeting-container {
-  margin-top: 20px;
+body {
+    height: 100vh;
+    max-height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.top-bar {
+    display: flex;
+    align-items: center;
+
+    height: 8vh;
+    background: #4E68EF;
+}
+
+.side-bar {
+    display: flex;
+    flex-direction: column;
+
+    height: 92vh;
+    width: 20vw;
+    min-width: 250px;
+    background: #E1E8FF;
+    border-right: 1px solid #4E68EF;
+}
+
+.journal-display {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    width: 80vw;
+    background: url("https://cdn.hipwallpaper.com/i/22/44/AKMUqs.gif");
+}
+
+.entry {
+    display: flex;
+    flex-direction: column;
+    
+    width: 90%;
+    background: whitesmoke;
+    border-radius: 6px;
+    margin: 10px;    
+}
+
+.entryTitle {
+    font-weight: bold;
+    margin: 4px;
+}
+
+.entryText {
+    width: 100%;
+    background: #eaeaea;
+    padding: 8px;
+    max-height: 120px;
+    overflow: auto;
 }
 
 #entry-list {
   list-style-type: none;
-}
-
-.entry {
-  border: thin solid black;
-  display: flex;
-  margin: 10px;
-  padding: 10px;
-  width: 300px;
-}
-
-.entry span {
-  flex-grow: 1;
+  padding: 0;
 }
