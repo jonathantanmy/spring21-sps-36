@@ -46,6 +46,21 @@ function createEntryElement(entry) {
     console.log(entry.score);
   });
 
+  const sentimentIconElement = document.createElement('img');
+//   sentimentIconElement.height = '4vw';
+//   sentimentIconElement.width = '4vw';
+  if (entry.score < -0.2) {
+    sentimentIconElement.src = 'images/sad.png';
+    sentimentIconElement.alt = 'negative sentiment face icon';
+  } else if (entry.score <0.2) {
+    sentimentIconElement.src = 'images/neutral.png';
+    sentimentIconElement.alt = 'neutral sentiment face icon';
+  } else {
+    sentimentIconElement.src = 'images/happy.png';
+    sentimentIconElement.alt = 'positive sentiment face icon';
+  }
+  
+
   const entryScoreElement = document.createElement('span');
   entryScoreElement.innerText = 'Score: ' + entry.score;
   entryScoreElement.style.fontStyle = 'italic';
@@ -62,6 +77,7 @@ function createEntryElement(entry) {
 
   entryElement.appendChild(entryTitleElement);
   entryElement.appendChild(entryTextElement);
+  entryElement.appendChild(sentimentIconElement);
   entryElement.appendChild(entryScoreElement);
   entryElement.appendChild(deleteButtonElement);
   return entryElement;
