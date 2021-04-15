@@ -49,6 +49,7 @@ function createEntryElement(entry) {
   const sentimentIconElement = document.createElement('img');
 //   sentimentIconElement.height = '4vw';
 //   sentimentIconElement.width = '4vw';
+  sentimentIconElement.className = 'sentimentIcon';
   if (entry.score < -0.2) {
     sentimentIconElement.src = 'images/sad.png';
     sentimentIconElement.alt = 'negative sentiment face icon';
@@ -59,7 +60,6 @@ function createEntryElement(entry) {
     sentimentIconElement.src = 'images/happy.png';
     sentimentIconElement.alt = 'positive sentiment face icon';
   }
-  
 
   const entryScoreElement = document.createElement('span');
   entryScoreElement.innerText = 'Score: ' + entry.score;
