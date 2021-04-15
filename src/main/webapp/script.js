@@ -50,7 +50,7 @@ function createEntryElement(entry) {
 //   sentimentIconElement.height = '4vw';
 //   sentimentIconElement.width = '4vw';
   sentimentIconElement.className = 'sentimentIcon';
-  if (entry.score < -0.2) {
+  if (entry.score <= -0.2) {
     sentimentIconElement.src = 'images/sad.png';
     sentimentIconElement.alt = 'negative sentiment face icon';
   } else if (entry.score <0.2) {
