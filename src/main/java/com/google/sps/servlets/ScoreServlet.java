@@ -45,8 +45,10 @@ public class ScoreServlet extends HttpServlet {
       userInfo = OAuthUtils.getUserInfo(sessionId);
     }
     else {
-        response.sendRedirect("/login");
+        response.getWriter().println("[]");
+        return;
     }
+
     Query<Entity> query =
         Query.newEntityQueryBuilder()
         .setKind("Entry")

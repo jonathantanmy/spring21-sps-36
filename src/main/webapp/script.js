@@ -105,8 +105,8 @@ google.charts.setOnLoadCallback(drawChart);
 
   const options = {
     'title': 'Daily Mood',
-    'width':400,
-    'height':400
+    'width': '100%',
+    'height': '100%'
   };
 
   const chart = new google.visualization.PieChart(
