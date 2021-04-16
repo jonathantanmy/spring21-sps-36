@@ -47,8 +47,7 @@ public class NewEntryServlet extends HttpServlet {
 
     String sessionId = request.getSession().getId();
     Userinfo userInfo = null;
-    boolean isUserLoggedIn =
-        OAuthUtils.isUserLoggedIn(sessionId);
+    boolean isUserLoggedIn = OAuthUtils.isUserLoggedIn(sessionId);
 
     if (isUserLoggedIn) {
       userInfo = OAuthUtils.getUserInfo(sessionId);
@@ -82,6 +81,6 @@ public class NewEntryServlet extends HttpServlet {
             .build();
     datastore.put(entryEntity);
     
-    response.sendRedirect("/index.html");
+    response.sendRedirect("/dashboard.html");
   }
 }

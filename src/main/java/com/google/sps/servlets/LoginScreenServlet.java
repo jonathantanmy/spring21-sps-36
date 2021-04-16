@@ -22,7 +22,7 @@ public class LoginScreenServlet extends HttpServlet {
         response.sendRedirect("/login");
     }
     else{
-        response.sendRedirect("/index.html");
+        response.sendRedirect("/dashboard.html");
     }
   }
 }
